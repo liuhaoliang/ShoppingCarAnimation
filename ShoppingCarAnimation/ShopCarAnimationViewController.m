@@ -52,8 +52,6 @@
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.fromValue = @1;
     opacityAnimation.toValue = @0.9;
-    opacityAnimation.fillMode = kCAFillModeForwards;
-    opacityAnimation.removedOnCompletion = YES;
     
     CABasicAnimation *transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     transformAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
@@ -63,6 +61,8 @@
     groupAnimation.animations = @[positionAnimation, transformAnimation, opacityAnimation];
     groupAnimation.duration = 0.8;
     groupAnimation.delegate = self;
+    groupAnimation.fillMode = kCAFillModeForwards;
+    groupAnimation.removedOnCompletion = NO;
     
     [transitionLayer addAnimation:groupAnimation forKey:@"cartParabola"];
     

@@ -24,4 +24,9 @@
  */
 - (void)addProductsAnimation:(UIImageView *)imageView dropToPoint:(CGPoint)dropToPoint isNeedNotification:(BOOL)isNeedNotification;
 
+/**
+ *  完成了动画后的回调，不想使用通知的方式的话，可以使用这个
+ */
+@property (nonatomic,copy) void(^addShopCarFinished)();
+
 @end

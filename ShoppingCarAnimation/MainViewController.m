@@ -67,6 +67,9 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     [self addProductsAnimation:cell.imageView dropToPoint:CGPointMake(kScreenWidth*0.75, self.view.layer.bounds.size.height - 40) isNeedNotification:YES];
+    self.addShopCarFinished = ^{
+        NSLog(@"完成了动画（如果不使用通知的方式，可以使用这种方式）");
+    };
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

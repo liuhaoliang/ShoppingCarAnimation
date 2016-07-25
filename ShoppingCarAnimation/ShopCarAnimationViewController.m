@@ -79,6 +79,9 @@
         if (self.isNeedNotification) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"shopCarAnimationEnd" object:nil];
         }
+        if (_addShopCarFinished) {
+            self.addShopCarFinished();
+        }
     }
 }
 

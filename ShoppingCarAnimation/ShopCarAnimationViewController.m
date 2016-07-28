@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSMutableArray *animationLayers;
 @property (nonatomic, assign) BOOL isNeedNotification;
+@property (nonatomic, assign) BOOL isAnimating;
 
 @end
 
@@ -28,6 +29,13 @@
 }
 
 - (void)addProductsAnimation:(UIImageView *)imageView dropToPoint:(CGPoint)dropToPoint isNeedNotification:(BOOL)isNeedNotification {
+    
+    //若正在做动画，就结束，防止连续点击
+    if (self.isAnimating) {
+        return;
+    }
+    
+    self.isAnimating = YES;
     
     self.isNeedNotification = isNeedNotification;
     if (self.animationLayers == nil) {
@@ -70,6 +78,9 @@
 
 #pragma mark - CAAnimationDelegate
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    
+    self.isAnimating = NO;
+    
     if (self.animationLayers.count > 0) {
         CALayer *layer = self.animationLayers[0];
         layer.hidden = YES;
